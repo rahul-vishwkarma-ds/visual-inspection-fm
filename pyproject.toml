@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "visual-inspection-fm"
+version = "0.1.0"
+description = "Calibrated, simulation-trained visual-inspection foundation model — HERE GOES hackathon prototype"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Rahul Vishwkarma", email = "rahul.vishwkarma@heregoes.ai" }]
+
+dependencies = [
+    "torch>=2.2",
+    "torchvision>=0.17",
+    "numpy>=1.26",
+    "scipy>=1.12",
+    "matplotlib>=3.8",
+    "pillow>=10.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "black>=24.0",
+    "isort>=5.13",
+    "flake8>=7.0",
+    "pre-commit>=3.6",
+]
+# sbi = ["sbi>=0.22"]  # uncomment once we swap the mock SBI head for the real `sbi` package
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"

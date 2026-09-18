@@ -1,0 +1,36 @@
+.PHONY: create_environment requirements format lint test demo clean
+
+PROJECT_NAME = visual-inspection-fm
+PYTHON = python
+
+## Set up a virtual environment
+create_environment:
+	$(PYTHON) -m venv .venv
+	@echo ">>> Activate with: source .venv/bin/activate"
+
+## Editable install of the package + dev tools
+requirements:
+	pip install -e ".[dev]"
+
+## Auto-format code
+format:
+	black src tests scripts
+	isort src tests scripts
+
+## Lint
+lint:
+	flake8 src tests scripts
+
+## Run tests
+test:
+	pytest -v
+
+## Run the current hackathon demo
+demo:
+	$(PYTHON) scripts/run_demo.py
+
+## Remove caches / build artifacts
+clean:
+	find . -type d -name "__pycache__" -exec rm -rf {} +
+	find . -type d -name "*.egg-info" -exec rm -rf {} +
+	rm -rf .pytest_cache build dist

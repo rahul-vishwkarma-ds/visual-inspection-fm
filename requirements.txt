@@ -1,0 +1,9 @@
+# Quick, non-editable install for anyone who just wants to run scripts/run_demo.py.
+# Prefer `pip install -e ".[dev]"` (see pyproject.toml) if you're developing the package.
+torch>=2.2
+torchvision>=0.17
+numpy>=1.26
+scipy>=1.12
+matplotlib>=3.8
+pillow>=10.2
+pytest>=8.0
